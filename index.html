@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>user account form</title>
+      <link rel="stylesheet" type="text/css" href="css/form.css">
+      <script type="text/javascript" src="js/jquery.min"></script>
+   </head>
+   <body>
+      <div id="opacity"></div>
+      <div id="d1">
+         <div id="d2">
+            <div id="d3">
+               <h3 id="h1">create an account</h3>
+            </div>
+            <div id="d4">
+               <form id="f" enctype="text/plain" action="" method="post">
+                  <div id="fi1">
+                     <input id="i1" placeholder="User name" type="text" class="quantumWizTextinputPaperinputInput exportInput" jsname="YPqjbf" autocomplete="off" tabindex="0" aria-label="username" aria-describedby="i.desc.351528018 i.err.351528018" name="entry.1891641127" value="" dir="auto" data-initial-dir="auto" data-initial-value="">
+                     <div id="dd1"></div>
+                  </div>
+                  <div id="fi1">
+                     <input id="i2" type="email" placeholder="Email ID" class="quantumWizTextinputPaperinputInput exportInput" jsname="YPqjbf" autocomplete="off" tabindex="0" aria-label="emailid" aria-describedby="i.desc.284201029 i.err.284201029" name="entry.1139814340" value="" dir="auto" data-initial-dir="auto" data-initial-value="">
+                     <div id="dd2"></div>
+                  </div>
+                  <div id="fi1">
+                     <input id="i3" type="Phone" placeholder="Phone number" class="quantumWizTextinputPaperinputInput exportInput" jsname="YPqjbf" autocomplete="off" tabindex="0" aria-label="phonenumber" aria-describedby="i.desc.1289841533 i.err.1289841533" name="entry.1884808829" value="" dir="auto" data-initial-dir="auto" data-initial-value="">
+                     <div id="dd3"></div>
+                  </div>
+                  <input id="b1" type="submit" name="submit" value="submit">
+               </form>
+            </div>
+         </div>
+      </div>
+      <div id="myModal" class="modal">
+         <div class="model-box">
+            <span class="close"><img src="img/unnamed.png"></span>
+            <div id="model-body">
+               <p id="para"><span id="s1">Thanks</span> <span id="s2">for</span> submitting</p>
+               <div id="sub-div"></div>
+            </div>
+         </div>
+      </div>
+      <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+      <script type="text/javascript">
+         var form = $('#f');
+         
+         $(form).submit(function(event) {
+          event.preventDefault();
+         
+         var formData = $(form).serialize();
+         var name = $("#i1").val();
+         var modal = document.getElementById('myModal');
+             var b1 = document.getElementById("b1");
+             var span = document.getElementsByClassName("close")[0];
+         
+         $.ajax({
+           type: 'POST',
+           url: $(form).attr('action'),
+           data: formData
+         })
+         .done(function(response) {
+         })
+         .fail(function(data) {
+           modal.style.display = "block";
+         $("#sub-div").text(name);
+         span.onclick = function() {
+         modal.style.display = "none";
+         }
+         window.onclick = function(event) {
+         if (event.target == modal) {
+             modal.style.display = "none";
+         }
+         }
+         });
+         });
+      </script>
+   </body>
+</html>
